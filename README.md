@@ -28,9 +28,9 @@ Para não precisar baixar um monte de arquivos para o computador, o projeto usa 
 
 ## 4️⃣ Integrantes do Projeto
 * Bruno Donizetti
-* Sopha Peron
-* Lorrano
-* Paula ZIto
+* Sophia 
+* Lorrana
+* Paula Zito
 
 ---
 
