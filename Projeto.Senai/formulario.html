@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<style>
+    /* Definição de variáveis para facilitar a manutenção */
+    :root {
+        --primary-color: #2957A4;
+        --primary-hover: #1c3d75;
+        --text-color: #2c3e50;
+        --border-color: #e2e8f0;
+        --focus-ring: rgba(59, 41, 164, 0.215);
+    }
+
+    /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #003366);
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+        }
+        /* Acessibilidade */
+        .acessibilidade {
+            background: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 3px solid #ff6600;
+        }
+
+        .acessibilidade button {
+            margin: 3px;
+        }
+
+    .form-container {
+        /* Fundo limpo e moderno (levemente translúcido se houver fundo na página) */
+        background: #ffffff;
+        
+        /* Borda fina e elegante */
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        
+        /* Dimensões */
+        max-width: 650px;
+        width: 90%;
+        margin: 40px auto;
+        
+        /* Espaçamento interno generoso (respiro para o layout) */
+        padding: 40px;
+        
+        /* Sombra premium, suave e realista */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.977), 0 1px 8px rgba(13, 16, 199, 0.174);
+        
+        /* Transição suave para interações */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Efeito hover sutil no card do formulário */
+    .form-container:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgb(7, 31, 152);
+    }
+    
+    /* Estilizando os títulos do formulário */
+    .form-container h2 {
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    /* Linha decorativa moderna abaixo do título */
+    .form-container h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--primary-color);
+        border-radius: 2px;
+    }
+    
+    /* Labels elegantes */
+    .form-label {
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        display: inline-block;
+    }
+    
+    /* Inputs modernos e minimalistas */
+    .form-control,
+    .form-select {
+        border: 1.5px solid var(--border-color);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 1rem;
+        color: var(--text-color);
+        transition: all 0.2s ease;
+        background-color: #f8fafc;
+    }
+    
+    /* Efeito de foco limpo e sem poluição visual */
+    .form-control:focus,
+    .form-select:focus {
+        background-color: #ffffff;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px var(--focus-ring);
+        outline: none;
+    }
+    
+    /* Botão moderno com gradiente sutil e transição de estado */
+    .btn-enviar {
+        background: linear-gradient(135deg, #3b71ca, var(--primary-color));
+        border: none;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        padding: 14px 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        width: 100%;
+        margin-top: 15px;
+        box-shadow: 0 4px 12px rgba(41, 87, 164, 0.2);
+    }
+    
+    .btn-enviar:hover {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(8, 16, 99, 0.374);
+    }
+
+    .btn-enviar:active {
+        transform: translateY(1px);
+    }
+
+    .navbar-brand {
+    color: #2957a4 !important;
+    font-weight: bold;
+    }
+
+    .navbar-brand:hover {
+        color: #1f4685 !important;
+    }
+
+        /* Alto contraste */
+    .alto-contraste {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    .alto-contraste * {
+        background-color: transparent;
+        color: #fff !important;
+        border-color: #fff !important;
+    }
+
+    .alto-contraste a {
+        color: #ffffff !important;
+    }
+
+    .alto-contraste input,
+    .alto-contraste select,
+    .alto-contraste textarea,
+    .alto-contraste button {
+        background-color: #000 !important;
+        color: #fff !important;
+        border: 2px solid #fff !important;
+    }
+    /* Footer */
+        footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .texto-grande {
+            font-size: 1.2em !important;
+        }
+
+              
+        .alto-contraste input::placeholder,
+        .alto-contraste textarea::placeholder {
+            color: #ffffff !important;
+            opacity: 1;
+        }
+
+        .alto-contraste input::-webkit-input-placeholder,
+        .alto-contraste textarea::-webkit-input-placeholder {
+            color: #ffffff !important;
+        }
+
+        .alto-contraste input::-moz-placeholder,
+        .alto-contraste textarea::-moz-placeholder {
+            color: #ffffff !important;
+        }
+        /* Botão Enviar Formulário no alto contraste */
+        .alto-contraste .btn-enviar {
+            background: #000 !important;
+            color: #fff !important;
+            border: 2px solid #fff !important;
+            box-shadow: none !important;
+        }
+
+        .alto-contraste .btn-enviar:hover {
+            background: #111 !important;
+            color: #fff !important;
+            border: 2px solid #fff !important;
+        }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="https://logodownload.org/wp-content/uploads/2019/08/senai-logo-1.png" height="40"
+                    alt="Logo SENAI">
+
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contato</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex gap-2 ms-3">
+                    <button class="btn btn-light btn-sm" onclick="aumentarFonte()">
+                        A+
+                    </button>
+
+                    <button class="btn btn-light btn-sm" onclick="diminuirFonte()">
+                        A-
+                    </button>
+
+                    <button class="btn btn-warning btn-sm" id="btnContraste" onclick="btnContraste()">
+                        Contraste
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- ✅ Container renomeado para form-container -->
+<div class="form-container">
+
+    <h2> Cadastro de Usuário</h2>
+
+    <!-- Formulário com os novos campos -->
+    <form class="row g-3 needs-validation" id="form-aluno" novalidate>
+
+        <!-- Nome Completo -->
+        <div class="col-md-6">
+
+            <label for="nome" class="form-label">
+                Nome Completo
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   id="nome"
+                   placeholder="Digite seu nome completo"
+                   required>
+
+            <div class="invalid-feedback">
+                Informe o nome completo.
+            </div>
+
+        </div>
+
+        <!-- E-mail -->
+        <div class="col-md-6">
+
+            <label for="email" class="form-label">
+                E-mail
+            </label>
+
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="exemplo@email.com"
+                   required>
+
+            <div class="invalid-feedback">
+                Informe um e-mail válido.
+            </div>
+
+        </div>
+
+        <!-- Telefone -->
+        <div class="col-md-6">
+
+            <label for="telefone" class="form-label">
+                Telefone
+            </label>
+
+            <input type="tel"
+                   class="form-control"
+                   id="telefone"
+                   placeholder="(DDD) 99999-9999"
+                   required>
+
+            <div class="invalid-feedback">
+                Informe o telefone.
+            </div>
+
+        </div>
+            <div class="col-md-6">
+
+            <label for="cpf" class="form-label">
+                CPF
+            </label>
+
+            <input type="cpf"
+                   class="form-control"
+                   id="cpf"
+                   placeholder="000.000.000-00"
+                   required>
+
+            <div class="invalid-feedback">
+                Informe o cpf.
+            </div>
+
+        </div>
+
+        <!-- Curso Desejado (Select) -->
+        <div class="col-md-6">
+
+            <label for="curso" class="form-label">
+                Curso Desejado
+            </label>
+
+            <select class="form-select"
+                    id="curso"
+                    required>
+
+                <option selected disabled value="">
+                    Selecione um curso...
+                </option>
+
+                <option value="informatica">Informática</option>
+                <option value="administracao">Administração</option>
+                <option value="contabilidade">Contabilidade</option>
+                <option value="recursos_humanos">Recursos Humanos</option>
+                <option value="marketing">Marketing</option>
+
+            </select>
+
+            <div class="invalid-feedback">
+                Escolha um curso.
+            </div>
+
+        </div>
+
+        <!-- Turno (Radio Button) -->
+        <div class="col-12">
+
+            <label class="form-label">
+                Turno
+            </label>
+
+            <div class="form-check">
+
+                <input class="form-check-input"
+                       type="radio"
+                       name="turno"
+                       id="turno_manha"
+                       value="manha"
+                       required>
+
+                <label class="form-check-label" for="turno_manha">
+                    Manhã
+                </label>
+
+            </div>
+
+            <div class="form-check">
+
+                <input class="form-check-input"
+                       type="radio"
+                       name="turno"
+                       id="turno_tarde"
+                       value="tarde">
+
+                <label class="form-check-label" for="turno_tarde">
+                    Tarde
+                </label>
+
+            </div>
+
+            <div class="form-check">
+
+                <input class="form-check-input"
+                       type="radio"
+                       name="turno"
+                       id="turno_noite"
+                       value="noite">
+
+                <label class="form-check-label" for="turno_noite">
+                    Noite
+                </label>
+
+            </div>
+
+            <div class="invalid-feedback">
+                Selecione um turno.
+            </div>
+
+        </div>
+
+        <!-- Checkbox Aceite dos Termos -->
+        <div class="col-12">
+
+            <div class="form-check">
+
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="termos"
+                       required>
+
+                <label class="form-check-label" for="termos">
+                    Aceito os termos e condições
+                </label>
+
+                <div class="invalid-feedback">
+                    Você deve aceitar os termos.
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Botão Enviar -->
+        <div class="col-12">
+
+            <button class="btn btn-enviar"
+                    type="submit">
+
+                Enviar Formulário
+
+            </button>
+
+        </div>
+
+            </form>
+        </div>
+            <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <footer class="text-center text-white py-4 mt-5" style="background-color: #003366;">
+        <div class="container">
+            <h5 class="fw-bold mb-2">Portal do Aluno SENAI</h5>
+            <hr class="border-light w-50 mx-auto">
+                <p class="mb-0">
+                Contatos: (19) 99372-9443 <br>
+                📍 Tambaú - SP <br>
+                © 2026 Portal do Aluno SENAI | Todos os direitos reservados.
+                </p>
+        </div>
+    </footer>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+<script src="https://unpkg.com/imask"></script> 
+<script>
+const telefoneInput = document.getElementById('telefone');
+const cpfInput = document.getElementById('cpf');
+
+IMask(telefoneInput, {
+    mask: [
+        {
+            mask: '(00) 0000-0000' //telefone fixo
+        },
+         {
+            mask: '(00) 00000-0000' //celular
+        },
+    ]
+}
+);
+IMask(cpfInput, {
+    mask: '000.000.000-00' //cpf
+}
+);
+// Funçaõ generica de erro
+function mostrarErro(titulo, mensagem){
+    Swal.fire({
+    icon: "error",
+    title: titulo,
+    text: mensagem,
+});
+}
+document.getElementById('form-aluno').addEventListener('submit',
+    function(event){
+        const telefone = telefoneInput.value.trim();
+        const cpf = cpfInput.value.trim();
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        const cpfNumeros = cpf.replace(/\D/g,'');
+        const telefoneNumeros = telefone.replace(/\D/g,'');
+
+        if(nome.length < 3){
+            event.preventDefault();
+            mostrarErro('Nome Inválido','Informe um nome completo!');
+            return;
+        }
+
+        //email tem q ter @ e .
+        else if(!email.includes('@') || !email.includes('.')){
+            event.preventDefault();
+            mostrarErro('Email inválido', 'Informe um email válido!');
+            return;
+        }
+
+        //Telefone - 10 digitos para fix e 11 para celular
+        else if(telefoneNumeros.length < 10 || telefoneNumeros.length > 11){
+            event.preventDefault();
+            mostrarErro('Telefone Inválido','Informe um telefone válido');
+            return;
+        }
+
+        //CPF - 11 digitos
+        else if (cpfNumeros.length != 11){
+            event.preventDefault();
+            mostrarErro('CPF Inválido','CPF possui 11 digitos');
+            return;
+        }
+
+        else{
+            event.preventDefault();
+
+            Swal.fire({
+                title: "Sucesso",
+                text: "Cadastro realizado com sucesso!",
+                icon: "success"
+            }).then(() => {
+                document.getElementById('form-aluno').submit();
+            });
+        }
+    }
+);
+</script>
+<script>
+     let tamanhoFonte = 100; // porcentagem inicial
+
+        function aumentarFonte() {
+            tamanhoFonte += 10; // aumenta 10% a cada clique
+
+            document.querySelectorAll('*').forEach(elemento => {
+                elemento.style.fontSize = tamanhoFonte + '%';
+            });
+        }
+
+        function diminuirFonte() {
+            if (tamanhoFonte > 50) { // limite mínimo
+                tamanhoFonte -= 10;
+
+                document.querySelectorAll('*').forEach(elemento => {
+                    elemento.style.fontSize = tamanhoFonte + '%';
+                });
+            }
+        }
+
+    const btnContraste = document.getElementById('btnContraste');
+
+    btnContraste.addEventListener('click', () => {
+        document.body.classList.toggle('alto-contraste');
+
+        // Salva a preferência
+        if (document.body.classList.contains('alto-contraste')) {
+            localStorage.setItem('contraste', 'ativo');
+        } else {
+            localStorage.setItem('contraste', 'inativo');
+        }
+    });
+
+    // Carrega a preferência ao abrir a página
+    window.addEventListener('load', () => {
+        if (localStorage.getItem('contraste') === 'ativo') {
+            document.body.classList.add('alto-contraste');
+        }
+    });
+</script>
+</html>
