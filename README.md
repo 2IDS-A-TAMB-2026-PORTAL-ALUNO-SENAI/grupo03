@@ -26,7 +26,7 @@ Para não precisar baixar um monte de arquivos para o computador, o projeto usa 
 
 ---
 
-## Integrantes do Projeto4️⃣
+## 4️⃣ Integrantes do Projeto
 * Bruno Donizetti
 * Sopha Peron
 * Lorrano
