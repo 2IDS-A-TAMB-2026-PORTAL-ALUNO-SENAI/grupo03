@@ -18,7 +18,7 @@ Este é um projeto amador de um **Portal do Aluno para o SENAI**, desenvolvido c
 
 Para não precisar baixar um monte de arquivos para o computador, o projeto usa links diretos (CDNs) das tecnologias mais conhecidas do mercado:
 * **HTML5 & CSS3** (Estrutura e estilização básica)
-* **Bootstrap 5.3.3** (Para deixar o site alinhado e responsivo no celular)
+* **Bootstrap 5** (Para deixar o site alinhado e responsivo no celular)
 * **FontAwesome 6.5.1** (Para os ícones bonitinhos dos cards)
 * **SweetAlert2** (Para as janelas de aviso modernas)
 * **Plugin Oficial VLibras** (Para a tradução em libras)
