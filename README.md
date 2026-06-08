@@ -26,6 +26,12 @@ Para não precisar baixar um monte de arquivos para o computador, o projeto usa 
 
 ---
 
+## 4️⃣
+* **Bruno Donizetti de Souza Gusmin
+* **Sopha Peron
+* **Lorrano
+* **Paula ZIto
+
 ## 📂 Estrutura das Páginas
 
 Para o site funcionar certinho, os arquivos devem estar salvos dentro da **mesma pasta** com os seguintes nomes:
@@ -36,3 +42,6 @@ Para o site funcionar certinho, os arquivos devem estar salvos dentro da **mesma
 ├── 📄 index.html        <-- Página principal (Portal do Aluno)
 ├── 📄 formulario.html   <-- Página com o formulário de cadastro
 └── 🖼️ image_a70242.png  <-- Imagem do ícone de libras (opcional)
+
+
+
