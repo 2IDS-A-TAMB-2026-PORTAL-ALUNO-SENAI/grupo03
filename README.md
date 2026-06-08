@@ -32,6 +32,8 @@ Para não precisar baixar um monte de arquivos para o computador, o projeto usa 
 * **Lorrano
 * **Paula ZIto
 
+---
+
 ## 📂 Estrutura das Páginas
 
 Para o site funcionar certinho, os arquivos devem estar salvos dentro da **mesma pasta** com os seguintes nomes:
