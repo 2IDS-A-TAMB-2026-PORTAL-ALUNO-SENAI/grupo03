@@ -26,11 +26,11 @@ Para não precisar baixar um monte de arquivos para o computador, o projeto usa 
 
 ---
 
-## 4️⃣
-* **Bruno Donizetti de Souza Gusmin
-* **Sopha Peron
-* **Lorrano
-* **Paula ZIto
+## Integrantes do Projeto4️⃣
+* Bruno Donizetti
+* Sopha Peron
+* Lorrano
+* Paula ZIto
 
 ---
 
